@@ -1,1 +1,1 @@
-web: gunicorn textrank:app
+web: gunicorn app:app
