@@ -21,7 +21,7 @@ def api_message():
     text = request.data.strip().decode('utf-8')
     return jsonify(
         status=200,
-        message=summarize(text)
+        message=summarize(text).split('\n')
     )
 
 
