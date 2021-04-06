@@ -12,16 +12,20 @@ CORS(app)
 def home():
     return jsonify(
         status=200,
-        message="Hello, Text Rank!"
+        message="Text Rank Test."
     )
 
 
 @app.route('/', methods=['POST'])
 def api_message():
     text = request.data.strip().decode('utf-8')
+    summary = summarize(text, ratio=0.1)
+    summary = summary.replace('<br>', '')
+    summary = summary.replace('[\n]', '')
+    summary = summary.replace('&nbsp;', '')
     return jsonify(
         status=200,
-        message=summarize(text)
+        message=summary
     )
 
 
